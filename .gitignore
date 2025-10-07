@@ -1,0 +1,15 @@
+﻿################################################################################
+# Este archivo .gitignore ha sido creado automáticamente por Microsoft(R) Visual Studio.
+################################################################################
+
+/SiaInteractive.API/.vs/SiaInteractive.API
+/SiaInteractive.API/SiaInteractive.API/bin/Debug/net8.0
+/SiaInteractive.API/SiaInteractive.API/obj
+/SiaInteractive.API/SiaInteractive.Application/bin/Debug/net8.0
+/SiaInteractive.API/SiaInteractive.Application/obj
+/SiaInteractive.API/SiaInteractive.Application.Test/bin/Debug/net8.0
+/SiaInteractive.API/SiaInteractive.Application.Test/obj
+/SiaInteractive.API/SiaInteractive.Domain/bin/Debug/net8.0
+/SiaInteractive.API/SiaInteractive.Domain/obj
+/SiaInteractive.API/SiaInteractive.Infrastructure/bin/Debug/net8.0
+/SiaInteractive.API/SiaInteractive.Infrastructure/obj
