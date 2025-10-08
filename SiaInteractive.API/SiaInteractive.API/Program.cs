@@ -1,6 +1,9 @@
 using Microsoft.EntityFrameworkCore;
 using SiaInteractive.API.Middleware;
 using SiaInteractive.Application.DTOs;
+using SiaInteractive.Application.Interfaces.Data;
+using SiaInteractive.Application.Interfaces.Service;
+using SiaInteractive.Application.Services;
 using SiaInteractive.Domain.Entities;
 using SiaInteractive.Infrastructure;
 
@@ -22,17 +25,31 @@ builder.Services.AddAutoMapper(cfg =>
     cfg.CreateMap<ProductDTO, CreateProductDto>().ReverseMap();
 });
 
+builder.Services.AddScoped<IProductService, ProductService>();
+builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
+builder.Services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
+
+var myAllowSpecificOrigins = "_myAllowSpecificOrigins";
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy(name: myAllowSpecificOrigins,
+                      policy =>
+                      {
+                          policy.WithOrigins("http://localhost:4200") 
+                                .AllowAnyHeader()
+                                .AllowAnyMethod();
+                      });
+});
+
 var app = builder.Build();
 app.UseExceptionMiddleware();
 
-// Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
-{
-    app.UseSwagger();
-    app.UseSwaggerUI();
-}
+app.UseSwagger();
+app.UseSwaggerUI();
 
 app.UseHttpsRedirection();
+
+app.UseCors(myAllowSpecificOrigins);
 
 app.UseAuthorization();
 

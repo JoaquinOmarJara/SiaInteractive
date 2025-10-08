@@ -1,0 +1,118 @@
+// Variables para mantener la consistencia
+$primary-color: #007bff;
+$danger-color: #dc3545;
+$warning-color: #ffc107;
+$light-gray: #f8f9fa;
+$white: #fff;
+$border-color: #dee2e6;
+$shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+
+// Estilo del contenedor principal
+:host {
+  display: block;
+  padding: 2rem;
+}
+
+.product-list-container {
+  background-color: $white;
+  padding: 2.5rem;
+  border-radius: 12px;
+  box-shadow: $shadow;
+  transition: all 0.3s ease;
+
+  &:hover {
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.12);
+  }
+}
+
+// Encabezado con título y botón de crear
+.list-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid $border-color;
+
+  h2 {
+    margin: 0;
+    font-weight: 600;
+    color: #333;
+  }
+}
+
+// Estilos de la tabla
+.product-table {
+  width: 100%;
+  border-collapse: collapse;
+
+  thead th {
+    background-color: $light-gray;
+    text-align: left;
+    padding: 1rem;
+    font-weight: 600;
+    color: #555;
+    border-bottom: 2px solid $border-color;
+  }
+
+  tbody td {
+    padding: 1rem;
+    border-bottom: 1px solid $border-color;
+    vertical-align: middle;
+  }
+
+  tbody tr {
+    transition: background-color 0.2s ease-in-out;
+    &:last-child td {
+      border-bottom: none;
+    }
+    &:hover {
+      background-color: lighten($light-gray, 2%);
+    }
+  }
+}
+
+// Estilos para los botones de acciones
+.action-buttons {
+  display: flex;
+  gap: 0.5rem; // Espacio entre botones
+}
+
+.btn {
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-weight: 500;
+  text-decoration: none; // Para los <a>
+  display: inline-block; // Para los <a>
+
+  &.btn-edit {
+    background-color: $warning-color;
+    color: #333;
+    &:hover {
+      background-color: darken($warning-color, 10%);
+      transform: translateY(-2px);
+    }
+  }
+
+  &.btn-delete {
+    background-color: $danger-color;
+    color: $white;
+    &:hover {
+      background-color: darken($danger-color, 10%);
+      transform: translateY(-2px);
+    }
+  }
+
+  &.btn-create {
+    background-color: $primary-color;
+    color: $white;
+    text-decoration: none;
+    &:hover {
+      background-color: darken($primary-color, 10%);
+      box-shadow: 0 4px 12px rgba($primary-color, 0.3);
+    }
+  }
+}
