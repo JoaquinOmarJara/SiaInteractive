@@ -1,3 +1,108 @@
+# Full-Stack Product Management App (C# .NET + Angular)
+
+Este es un proyecto full-stack diseñado para gestionar un catálogo de productos y sus categorías. La solución incluye un backend robusto construido con C# y .NET, y un frontend moderno e interactivo desarrollado con Angular.
+
+---
+## 🏛️ Arquitectura y Tecnologías
+
+La aplicación sigue principios de diseño modernos y una arquitectura en capas para asegurar que sea mantenible, escalable y testeable.
+
+### ⚙️ Backend (.NET / C#)
+
+* **Framework**: ASP.NET Core Web API
+* **Lenguaje**: C#
+* **Arquitectura**: **N-Layer** (API, Application, Domain, Infrastructure)
+* **Principios**: **SOLID** para un código desacoplado y mantenible.
+* **Base de Datos**: **SQL Server** con **Entity Framework Core** (enfoque Code-First).
+* **Patrones de Diseño**:
+    * **Repositorio y Unidad de Trabajo (Repository & Unit of Work)** para abstraer el acceso a datos.
+    * **Inyección de Dependencias (DI)** utilizada en toda la aplicación.
+* **Features Clave**:
+    * **Middleware** para gestión centralizada de excepciones.
+    * Uso de **DTOs (Data Transfer Objects)** y **AutoMapper** para comunicar la API y la lógica de negocio.
+
+### 🎨 Frontend (Angular)
+
+* **Framework**: **Angular**
+* **Arquitectura**: **Standalone Components**, el enfoque moderno sin `NgModules`.
+* **Comunicación**: Servicios con **HttpClient** para consumir la API RESTful.
+* **Formularios**: **Reactive Forms** para un manejo robusto de la entrada de datos.
+* **Estilos**: **SCSS** para estilos avanzados, mantenibles y visualmente atractivos.
+* **Enrutamiento**: Configuración de rutas para la navegación en una Single-Page Application (SPA).
+
+### 🧪 Testing
+
+* **Backend**: Pruebas unitarias para la capa de Lógica de Negocio (`Application`).
+* **Herramientas**: **xUnit** (framework de testing), **Moq** (para mocks de dependencias) y **FluentAssertions** (para validaciones legibles).
+
+---
+## 🚀 Cómo Empezar
+
+Sigue estos pasos para configurar y ejecutar el proyecto en tu entorno local.
+
+### Requisitos Previos
+
+* [.NET SDK](https://dotnet.microsoft.com/download)
+* [SQL Server](https://www.microsoft.com/es-es/sql-server/sql-server-downloads) (Express o Developer)
+* [Node.js y npm](https://nodejs.org/)
+* [Angular CLI](https://angular.io/cli): `npm install -g @angular/cli`
+
+### Configuración del Backend
+
+1.  **Clona el repositorio:**
+    ```bash
+    git clone [https://URL-DE-TU-REPO.git](https://URL-DE-TU-REPO.git)
+    cd ruta/al/backend
+    ```
+2.  **Configura la base de datos:**
+    * Abre el archivo `appsettings.json` en el proyecto API.
+    * Modifica la `ConnectionString` para que apunte a tu instancia de SQL Server.
+3.  **Aplica las migraciones:**
+    * Este comando creará la base de datos y las tablas según el modelo Code-First.
+    ```bash
+    dotnet ef database update
+    ```
+4.  **Ejecuta la API:**
+    ```bash
+    dotnet run
+    ```
+    La API estará disponible en la URL especificada (ej. `https://localhost:7123`).
+
+### Configuración del Frontend
+
+1.  **Navega a la carpeta del frontend:**
+    ```bash
+    cd ruta/al/frontend
+    ```
+2.  **Instala las dependencias:**
+    ```bash
+    npm install
+    ```
+3.  **Configura la URL de la API:**
+    * Abre el archivo `src/environments/environment.ts`.
+    * Asegúrate de que la propiedad `apiUrl` apunte a la URL de tu backend.
+4.  **Ejecuta la aplicación Angular:**
+    ```bash
+    ng serve
+    ```
+    La aplicación estará disponible en `http://localhost:4200`.
+
+---
+## 📦 Despliegue
+
+La aplicación está preparada para ser desplegada en **Azure**.
+
+* **Backend (API)**: Se despliega en un **Azure App Service**.
+* **Frontend (Angular)**: También se despliega en un **Azure App Service**, utilizando un archivo `web.config` para manejar correctamente el enrutamiento de la SPA.
+
+---
+## 📋 `.gitignore`
+
+El repositorio incluye un archivo `.gitignore` configurado para ignorar las carpetas de compilación (`[Bb]in/`, `[Oo]bj/`), dependencias (`node_modules`) y otros archivos generados para mantener el control de versiones limpio.
+
+---
+# Examen teorico
+
 # Escalabilidad y Diseño Arquitectónico 🏗️
 
 A continuación, se presentan una serie de respuestas teóricas relacionadas con la escalabilidad, distribución de carga, y diseño de sistemas de alto volumen.
